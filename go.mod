@@ -8,4 +8,5 @@ require (
 	github.com/spf13/pflag v1.0.3
 	github.com/spothero/tools v0.16.0
 	github.com/stianeikeland/go-rpio v4.2.0+incompatible
+	go.uber.org/zap v1.9.1
 )
