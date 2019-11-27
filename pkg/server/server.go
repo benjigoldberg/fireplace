@@ -11,8 +11,8 @@ import (
 
 // RegisterMuxes registers HTTP handlers with the webserver mux
 func RegisterMuxes(mux *mux.Router) {
-	mux.Handle("/", http.FileServer(http.Dir("./static")))
 	mux.HandleFunc("/fireplace", fireplaceHandler)
+	mux.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
 }
 
 func fireplaceHandler(w http.ResponseWriter, r *http.Request) {
