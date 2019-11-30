@@ -1,4 +1,4 @@
-.PHONY: default_target all build install test coverage lint help
+.PHONY: default_target all build install set-service test coverage lint help
 
 BIN_DIR=$(GOPATH)/bin
 LINTER_INSTALLED := $(shell sh -c 'which golangci-lint')
@@ -25,7 +25,7 @@ build:
 
 ifeq ($(shell uname), Linux)
 set-service: # Sets the service into Systemd
-	$(shell ln -s $(CURDIR)/fireplace.service /etc/systemd/system/fireplace.service && systemctl daemon-reload)
+	$(shell ln -s $(CURDIR)/config/systemd/fireplace.service /etc/systemd/system/fireplace.service && systemctl daemon-reload && systemctl enable fireplace.service)
 install: set-service # Installs the fireplace server
 endif
 install:

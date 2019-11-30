@@ -1,0 +1,16 @@
+[Unit]
+Description=Fireplace Server
+After=rsyslog.target
+
+[Service]
+WorkingDirectory=/home/bgoldberg/workspace/fireplace
+ExecStart=/home/bgoldberg/workspace/fireplace/fireplace server -a 0.0.0.0 -p 80
+Restart=always
+KillSignal=SIGQUIT
+Type=simple
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+
